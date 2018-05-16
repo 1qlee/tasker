@@ -1,0 +1,12 @@
+extends layout
+
+block scripts
+  script(type="text/javascript", src="../public/scripts/mylist_script.js")
+
+block content
+  h1 Hello, #{username}
+  p My List
+  input#addItemInput(type="text", name="item", placeholder="Enter a new item")
+  button#addItemButton Add Item
+  ul#list
+  

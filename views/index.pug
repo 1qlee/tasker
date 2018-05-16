@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 To Do List App
+  if (username)
+    a(href="/mylist") Go To My List
+    p
+      a(href="/logout") Log Out
+  else 
+    a(href="/login") Log In
