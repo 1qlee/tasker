@@ -1,0 +1,8 @@
+nav.nav
+  a.nav-item(href="/") Home
+  if (isAuthenticated)
+    a.nav-item(href="/profile") Profile
+    a.nav-item(href="/logout") Log Out
+  else
+    a.nav-item(href="/login") Log In
+    a.nav-item(href="/signup") Sign Up

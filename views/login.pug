@@ -1,7 +1,9 @@
 extends layout
 
 block content
-  h1 Log In
-  form(action="/login", method="POST")
-    input(type="text", name="username", placeholder="Username")
-    button(type="submit") Submit
+  .content
+    h1 Log In
+    form(action="/login", method="POST")
+      input(type="text", name="username", placeholder="Username")
+      input(type="password", name="password", placeholder="Password")
+      button(type="submit") Submit

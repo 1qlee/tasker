@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  if errors
+    ul
+      each error in errors
+        li= error.msg
+  .content
+    h1 Sign Up
+    form(action="/signup", method="POST")
+      input(type="email", name="email", placeholder="Email")
+      input(type="text", name="username", placeholder="Username")
+      input(type="password", name="password", placeholder="Password")
+      button(type="submit") Submit

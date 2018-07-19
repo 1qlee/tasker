@@ -1,20 +1,29 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 
 router.get("/login", (req, res) => {
   res.render("login", { title: "Log In" });
 });
 
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/profile',
+  failureRedirect: '/login'
+}));
+
 router.get("/logout", (req, res) => {
-  res.clearCookie("username");
-  res.redirect("/");
+  req.logout();
+  if (req.session) {
+    req.session.destroy((err) => {
+      if(err) {
+        return next(err);
+      }
+      else {
+        res.clearCookie("connect.sid");
+        res.redirect("/");
+      }
+    });
+  }
 })
-
-router.post("/login", (req, res) => {
-  const username = req.body.username;
-
-  res.cookie('username', username);
-  res.redirect("/mylist");
-});
 
 module.exports = router;

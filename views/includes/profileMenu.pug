@@ -1,0 +1,13 @@
+.menu
+  .menu-header
+    form#new-list-form
+      input#new-list-input.input(type="text", name="newListInput", placeholder="Add a list", autocomplete="off")
+      button#new-list-button.button.is-fullwidth(type="submit", name="newListButton") + New List
+  dl#menu-list.menu-list
+    if (userLists)
+      each list in userLists
+        li.menu-item
+          if (list.name === currentList)
+            a.menu-link.is-active(href=`/profile/lists/${list.name}`)=list.name
+          else
+            a.menu-link(href=`/profile/lists/${list.name}`)=list.name

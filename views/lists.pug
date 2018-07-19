@@ -1,0 +1,30 @@
+extends layout
+
+block scripts
+  script(type="text/javascript", src="/scripts/profile/profile_script.js")
+  link(rel="stylesheet", href="/css/min/profile.min.css")
+
+block content
+  include includes/profileNav
+  .container
+    include includes/profileMenu
+    .main
+      section.main-section
+        .main-header
+          .toolbar
+            .toolbar-left
+              h2.list-title #{currentList}
+            .toolbar-right
+              button#select.button.toolbar-button.is-outlined.is-small Select All
+              button#complete.button.toolbar-button.is-outlined.is-small Mark Complete
+              button#delete.button.toolbar-button.is-outlined.is-small Delete
+        #list.list
+          if (listTasks.length > 0)
+            each task in listTasks
+              .task
+                .checkbox
+                  input.check(type="checkbox", id=`checkbox-${task.id}`)
+                  label(for=`checkbox-${task.id}`)
+                p=task.value
+          else
+            p You have no tasks yet. Enter some by using the input above!

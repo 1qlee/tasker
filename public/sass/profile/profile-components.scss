@@ -1,0 +1,59 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .toolbar-left {
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+  .toolbar-right {
+
+  }
+  .button {
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}
+
+.task {
+  align-items: center;
+  background-color: $white;
+  border-radius: 5px;
+  display: flex;
+  padding: 1rem;
+  .checkbox {
+    margin-right: 1rem;
+  }
+  &:hover {
+    background-color: $background;
+    cursor: pointer;
+  }
+}
+
+#task-form {
+  position: relative;
+  margin-left: 1.5rem;
+}
+
+#task-input {
+  box-shadow: none;
+  border: none;
+  font-size: 1.1rem;
+  padding: 1rem 1rem 1rem 1.5rem;
+  transition: width 0.4s ease;
+  width: 250px;
+  &:focus {
+    border-color: $blue;
+    width: 100%;
+  }
+}
+
+.icon {
+  &.list-add {
+    position: absolute;
+    top: 14px;
+    left: -6px;
+  }
+}
