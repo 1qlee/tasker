@@ -1,13 +1,26 @@
-.menu
+#menu.menu
   .menu-header
+    h3 tasker
+  .menu-block
     form#new-list-form
       input#new-list-input.input(type="text", name="newListInput", placeholder="Add a list", autocomplete="off")
-      button#new-list-button.button.is-fullwidth(type="submit", name="newListButton") + New List
+      button#new-list-button.button.is-fullwidth(type="submit", name="newListButton") New List
   dl#menu-list.menu-list
     if (userLists)
       each list in userLists
         li.menu-item
           if (list.name === currentList)
-            a.menu-link.is-active(href=`/profile/lists/${list.name}`)=list.name
+            a.menu-link.is-active(id=`list-${list.id}`, href=`/profile/lists/${list.name}`)=list.name
           else
-            a.menu-link(href=`/profile/lists/${list.name}`)=list.name
+            a.menu-link(id=`list-${list.id}`, href=`/profile/lists/${list.name}`)=list.name
+  #submenu.menu-submenu
+    p.submenu-item(data-action="edit")
+      i.icon
+        svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="#384053", fill-opacity="1")
+          path(d="M12.3 3.7l4 4L4 20H0v-4L12.3 3.7zm1.4-1.4L16 0l4 4-2.3 2.3-4-4z")
+      span Edit
+    p.submenu-item(data-action="delete")
+      i.icon
+        svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="#d8394b", fill-opacity="1")
+          path(d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z")          
+      span.is-red Delete

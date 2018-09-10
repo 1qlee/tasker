@@ -4,14 +4,63 @@
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
-  padding: 1.5rem 1rem;
   position: relative;
   min-width: 250px;
   width: 250px;
 }
 
+.menu-submenu {
+  display: none;
+  position: absolute;
+  background-color: $white;
+  box-shadow: 0px 5px 30px $shadow;
+  border-radius: 0 5px 5px 5px;
+  padding: 0.3rem 0;
+  width: 125px;
+  z-index: 10;
+  &.is-active {
+    display: block;
+    animation: dropDown ease-out 0.2s;
+  }
+}
+
+.submenu-item {
+  align-items: center;
+  display: inline-flex;
+  padding: 1rem;
+  width: 100%;
+  .icon {
+    margin-right: 0.4rem;
+    svg {
+      height: 16px;
+      width: 16px;
+    }
+  }
+  &:hover {
+    background-color: $background;
+    cursor: pointer;
+  }
+}
+
+@keyframes dropDown {
+  0% {
+    opacity: 0.5;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .menu-header {
-  margin-bottom: 1rem;
+  background-color: $background;
+  padding: 1.5rem 1rem;
+}
+
+.menu-block {
+  display: block;
+  padding: 1rem;
 }
 
 .menu-list {
@@ -20,17 +69,42 @@
   overflow-y: auto;
 }
 
+.menu-item {
+  position: relative;
+}
+
 .menu-link {
+  color: $font-light;
   display: block;
-  padding: 0.8rem;
+  padding: 1rem 1.5rem;
   position: relative;
   text-decoration: none;
   &.is-active {
+    color: $font;
     font-weight: 700;
+    &::before {
+      width: 4px;
+    }
+  }
+  &.is-selected {
     background-color: $background-active;
   }
+  &::before {
+    content: "";
+    background: $primary;
+    border-radius: 25px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+  }
   &:hover {
-    background-color: $background;
+    &:not(.is-active) {
+      &:not(.is-selected) {
+        background-color: $background;
+      }
+    }
   }
 }
 
@@ -54,7 +128,12 @@
   z-index: 4;
   &.is-active {
     opacity: 1;
-    width: calc(100% - 30px);
+    width: calc(100% - 45px);
     z-index: 5;
   }
+}
+
+#edit-list-input {
+  margin: 0.2rem 1.4rem;
+  width: 205px;
 }

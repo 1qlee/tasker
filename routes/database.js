@@ -9,7 +9,9 @@ let connection = mysql.createConnection({
 })
 
 connection.connect((err) => {
-  if (err) throw err;
+  if (err) {
+    return console.log("Database has not been connected.", err);
+  }
   console.log("Connected to database.");
 });
 

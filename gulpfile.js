@@ -6,7 +6,7 @@ var rename = require('gulp-rename');
 gulp.task('watch', function() {
   gulp.watch('public/sass/profile/profile.scss')
   .on('change', function(file){
-    gulp.src(file.path).pipe(sass()) // gulp-sass module - converts sass to css
+    gulp.src('public/sass/profile/profile.scss').pipe(sass()) // gulp-sass module - converts sass to css
     .pipe(rename({dirname: ''}))
     .pipe(cleanCSS())
     .pipe(rename({

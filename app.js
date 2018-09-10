@@ -47,6 +47,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Create global var for IF authenticated user
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated();
   next();

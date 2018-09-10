@@ -5,26 +5,48 @@ block scripts
   link(rel="stylesheet", href="/css/min/profile.min.css")
 
 block content
-  include includes/profileNav
   .container
     include includes/profileMenu
     .main
+      include includes/profileNav
       section.main-section
-        .main-header
-          .toolbar
-            .toolbar-left
-              h2.list-title #{currentList}
-            .toolbar-right
-              button#select.button.toolbar-button.is-outlined.is-small Select All
-              button#complete.button.toolbar-button.is-outlined.is-small Mark Complete
-              button#delete.button.toolbar-button.is-outlined.is-small Delete
-        #list.list
-          if (listTasks.length > 0)
+        if (listTasks.length > 0)
+          .main-header
+            .toolbar
+              .toolbar-left
+                h2.list-title #{currentList}
+              .toolbar-right
+                button#select.button.toolbar-button.is-icon.is-small
+                  i.icon
+                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="#fff", fill-opacity="1")
+                      path(d="M6 6V2c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4v4a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8c0-1.1.9-2 2-2h4zm2 0h4a2 2 0 0 1 2 2v4h4V2H8v4zM2 8v10h10V8H2z")
+                  span Select All
+                button#complete.button.toolbar-button.is-icon.is-small
+                  i.icon
+                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="#fff", fill-opacity="1")
+                      path(d="M0 2C0 .9.9 0 2 0h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm14 12h4V2H2v12h4c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2zM5 9l2-2 2 2 4-4 2 2-6 6-4-4z")
+                  span Mark Complete
+                button#delete.button.toolbar-button.is-icon.is-small
+                  i.icon
+                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="#fff", fill-opacity="1")
+                      path(d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z")
+                  span Delete
+          #list.list
             each task in listTasks
-              .task
-                .checkbox
-                  input.check(type="checkbox", id=`checkbox-${task.id}`)
-                  label(for=`checkbox-${task.id}`)
-                p=task.value
-          else
-            p You have no tasks yet. Enter some by using the input above!
+              if (task.status == 1)
+                .task.complete
+                  .checkbox
+                    input.check(type="checkbox", id=`checkbox-${task.id}`)
+                    label(for=`checkbox-${task.id}`)
+                  p=task.value
+              else
+                .task
+                  .checkbox
+                    input.check(type="checkbox", id=`checkbox-${task.id}`)
+                    label(for=`checkbox-${task.id}`)
+                  p=task.value
+        else if (currentList === "None")
+          p List not found.
+        else
+          img(src="/images/undraw/undraw-no_data.svg", height="120px", width="120px", style="margin:auto;display:block")
+          p You have no tasks yet. Add a task using the input above!

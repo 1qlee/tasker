@@ -1,11 +1,11 @@
 nav.nav
   .nav-left
-    img.nav-item(src="/images/tasker-logo.png", height="60px")
   .nav-center
     .nav-item
       form#task-form
         input#task-input.input(type="text", name="taskItemInput", placeholder="Add a task", autocomplete="off")
         i.icon.list-add
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#a9a9a9" fill-opacity="1"><path class="heroicon-ui" d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z"/></svg>
+          svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", width="24", height="24", fill="#a9a9a9", fill-opacity="1")
+            path(d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z")
   .nav-right
     p.nav-item #{username.charAt(0).toUpperCase() + username.slice(1)}
