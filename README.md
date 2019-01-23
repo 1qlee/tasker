@@ -2,7 +2,7 @@
 
 A web application that helps users manage lists of tasks. Built with Express. Styling in Sass and views in Pug. Local MySQL database (Wampserver on Windows).
 
-![Tasker Screenshot](https://github.com/1qlee/tasker/blob/master/assets/tasker_ss.png")
+![Tasker Screenshot](https://github.com/1qlee/tasker/assets/tasker_ss.png")
 
 ## Quick Start
 
